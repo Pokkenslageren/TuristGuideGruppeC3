@@ -17,7 +17,7 @@ class TouristGuideApiApplicationTests {
 
         TouristRepository touristRepository = new TouristRepository();
 
-        touristRepository.createAttraction("rundetårn","tårn i købmagergade");
+
 
         touristRepository.deleteAttraction("tivoli");
 

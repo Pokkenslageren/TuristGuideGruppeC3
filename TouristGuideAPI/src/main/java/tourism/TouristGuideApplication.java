@@ -1,5 +1,6 @@
 package tourism;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tourism.model.TouristAttraction;
 import org.springframework.stereotype.Service;
 import tourism.repository.TouristRepository;
@@ -7,6 +8,7 @@ import tourism.repository.TouristRepository;
 import java.util.List;
 
 @Service
+@SpringBootApplication
 public class TouristGuideApplication {
     private final TouristRepository touristRepository;
 
@@ -18,7 +20,12 @@ public class TouristGuideApplication {
         return touristRepository.getTouristAttractionList();
     }
 
-    public TouristAttraction createAttraction(String name, String description){
-        return  touristRepository.createAttraction(name, description);
+    public TouristAttraction createAttraction(TouristAttraction touristAttraction){
+        return  touristRepository.createAttraction(touristAttraction);
+    }
+
+    public TouristAttraction findAttractionByName(String name){
+        TouristAttraction touristAttraction = touristRepository.findAttractionByName(name);
+        return touristAttraction;
     }
 }

@@ -7,11 +7,11 @@ import java.util.*;
 @Repository
 public class TouristRepository{
 
-    List<TouristAttraction> touristAttractionList;
+    List<TouristAttraction> touristAttractionList = new ArrayList<>();
 
 
     public TouristRepository(){
-        this.touristAttractionList = new ArrayList<>();
+        //this.touristAttractionList = new ArrayList<>();
         touristAttractionList.add(new TouristAttraction("operaen", "operahus på refshaleøen"));
         touristAttractionList.add(new TouristAttraction("zoo", "zoologisk have i københavn v"));
         touristAttractionList.add(new TouristAttraction("tivoli", "Forlystelsespark i københavn"));
@@ -29,23 +29,28 @@ public class TouristRepository{
 
     /**
      * CRUD method to add a tourist attraction to the list, given name and description
-     * @param name of the attraction
-     * @param description of the attraction
+     * @param touristAttraction
      */
-    public TouristAttraction createAttraction(String name, String description){
-        TouristAttraction touristAttraction = new TouristAttraction(name, description);
+    public TouristAttraction createAttraction(TouristAttraction touristAttraction){
         touristAttractionList.add(touristAttraction);
         return touristAttraction;
     }
 
-    public void readAttraction(String name){
-        Iterator<TouristAttraction> itr = touristAttractionList.iterator();
+    public TouristAttraction findAttractionByName(String name){
+/*        Iterator<TouristAttraction> itr = touristAttractionList.iterator();
+        TouristAttraction tour = new TouristAttraction();
         while(itr.hasNext()){
-            TouristAttraction touristAttraction = itr.next();
-            if(touristAttraction.getName().equals(name)){
-                System.out.println(touristAttraction); //NB!
+            tour = itr.next();
+            if(tour.getName().equals(name)){
+                return tour;
+            }
+        }*/
+        for(TouristAttraction t : touristAttractionList){
+            if(t.getName().equals(name)){
+                return t;
             }
         }
+        return null;
     }
 
     //public void updateAttraction()
