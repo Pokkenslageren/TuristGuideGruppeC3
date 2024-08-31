@@ -47,7 +47,8 @@ public class TouristController {
 
     @PostMapping("/update")
     public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction){
-
+        TouristAttraction newTouristAttraction = touristGuideApplication.updateAttraction(touristAttraction);
+        return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
 
     @PostMapping("/delete/{name}")

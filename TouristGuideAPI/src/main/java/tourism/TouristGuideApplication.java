@@ -29,6 +29,10 @@ public class TouristGuideApplication {
         return touristAttraction;
     }
 
+    public TouristAttraction updateAttraction(TouristAttraction touristAttraction){
+        return touristRepository.updateAttraction(touristAttraction);
+    }
+
     public TouristAttraction deleteAttraction(String name){
         TouristAttraction touristAttraction = touristRepository.deleteAttraction(name);
         return touristAttraction;

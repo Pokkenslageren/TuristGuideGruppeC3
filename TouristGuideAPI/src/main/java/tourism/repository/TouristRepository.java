@@ -45,7 +45,12 @@ public class TouristRepository{
         return null;
     }
 
-    public TouristAttraction updateAttraction()
+    //Mulig implementation
+    public TouristAttraction updateAttraction(TouristAttraction touristAttraction){
+        deleteAttraction(touristAttraction.getName()); //NB opdaterer men skubber ned bagest i listen.
+        touristAttractionList.add(touristAttraction);
+        return touristAttraction;
+    }
 
 
     /**
