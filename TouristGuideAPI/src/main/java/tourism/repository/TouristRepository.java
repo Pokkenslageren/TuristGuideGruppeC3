@@ -37,14 +37,6 @@ public class TouristRepository{
     }
 
     public TouristAttraction findAttractionByName(String name){
-/*        Iterator<TouristAttraction> itr = touristAttractionList.iterator();
-        TouristAttraction tour = new TouristAttraction();
-        while(itr.hasNext()){
-            tour = itr.next();
-            if(tour.getName().equals(name)){
-                return tour;
-            }
-        }*/
         for(TouristAttraction t : touristAttractionList){
             if(t.getName().equals(name)){
                 return t;
@@ -53,20 +45,22 @@ public class TouristRepository{
         return null;
     }
 
-    //public void updateAttraction()
+    public TouristAttraction updateAttraction()
 
 
     /**
      * CRUD method to remove a tourist attraction from the list
      * @param name of the attractions
      */
-    public void deleteAttraction(String name){
+    public TouristAttraction deleteAttraction(String name){
         Iterator<TouristAttraction> itr = touristAttractionList.iterator();
         while(itr.hasNext()){
             TouristAttraction touristAttraction = itr.next();
             if(touristAttraction.getName().equals(name)){
                 itr.remove();
+                return touristAttraction;
             }
         }
+        return  null;
     }
 }

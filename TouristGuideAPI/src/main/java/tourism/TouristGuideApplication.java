@@ -28,4 +28,9 @@ public class TouristGuideApplication {
         TouristAttraction touristAttraction = touristRepository.findAttractionByName(name);
         return touristAttraction;
     }
+
+    public TouristAttraction deleteAttraction(String name){
+        TouristAttraction touristAttraction = touristRepository.deleteAttraction(name);
+        return touristAttraction;
+    }
 }
