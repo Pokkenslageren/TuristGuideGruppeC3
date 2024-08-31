@@ -1,6 +1,6 @@
-package repository;
+package tourism.repository;
 
-import model.TouristAttraction;
+import tourism.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
 import java.util.*;
 
@@ -32,8 +32,10 @@ public class TouristRepository{
      * @param name of the attraction
      * @param description of the attraction
      */
-    public void createAttraction(String name, String description){
-        touristAttractionList.add(new TouristAttraction(name, description));
+    public TouristAttraction createAttraction(String name, String description){
+        TouristAttraction touristAttraction = new TouristAttraction(name, description);
+        touristAttractionList.add(touristAttraction);
+        return touristAttraction;
     }
 
     public void readAttraction(String name){

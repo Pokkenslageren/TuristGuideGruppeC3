@@ -1,9 +1,9 @@
 package org.example.touristguideapi;
 
-import model.TouristAttraction;
+import tourism.model.TouristAttraction;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import repository.TouristRepository;
+import tourism.repository.TouristRepository;
 
 @SpringBootTest
 class TouristGuideApiApplicationTests {

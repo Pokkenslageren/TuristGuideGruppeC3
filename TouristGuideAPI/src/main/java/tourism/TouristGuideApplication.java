@@ -1,8 +1,8 @@
-package service;
+package tourism;
 
-import model.TouristAttraction;
+import tourism.model.TouristAttraction;
 import org.springframework.stereotype.Service;
-import repository.TouristRepository;
+import tourism.repository.TouristRepository;
 
 import java.util.List;
 
@@ -16,5 +16,9 @@ public class TouristGuideApplication {
 
     public List<TouristAttraction> getTouristAttractionList(){
         return touristRepository.getTouristAttractionList();
+    }
+
+    public TouristAttraction createAttraction(String name, String description){
+        return  touristRepository.createAttraction(name, description);
     }
 }
