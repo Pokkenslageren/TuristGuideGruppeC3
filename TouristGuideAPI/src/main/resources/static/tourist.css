@@ -1,0 +1,19 @@
+body {
+    font-size: 100%;
+    margin-left: 2em;
+    margin-right: 2em;}
+header {
+    padding-bottom: .75em;
+    border-bottom: 3px solid black;
+    margin-bottom: 0; }
+h1 {
+    color: black;
+    font-size: 200%;
+    margin-bottom: 0;
+    font-family: Arial, sans-serif;
+ }
+
+ul {
+    font-family: Tahoma, sans-serif;
+    font-size: 100%;
+}

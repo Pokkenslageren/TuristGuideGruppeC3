@@ -13,7 +13,7 @@ import java.util.*;
 
 @Controller
 
-@RequestMapping("/attractions")
+@RequestMapping("/attractions") //skal vise velkomstside
 public class TouristController {
     private final TouristGuideApplication touristGuideApplication;
 
@@ -27,7 +27,7 @@ public class TouristController {
         SpringApplication.run(TouristGuideApplication.class, args);
     }
 
-    @GetMapping("")
+    @GetMapping("") ///attractions skal vise attractions
     public ResponseEntity<List<TouristAttraction>> getTouristAttractionList(){
         List<TouristAttraction> touristAttractionList = touristGuideApplication.getTouristAttractionList();
         return new ResponseEntity<>(touristAttractionList, HttpStatus.OK);
