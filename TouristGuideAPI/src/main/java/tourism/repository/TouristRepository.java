@@ -45,6 +45,7 @@ public class TouristRepository{
         return null;
     }
 
+
     //Mulig implementation
     public TouristAttraction updateAttraction(TouristAttraction touristAttraction){
         deleteAttraction(touristAttraction.getName()); //NB opdaterer men skubber ned bagest i listen.
