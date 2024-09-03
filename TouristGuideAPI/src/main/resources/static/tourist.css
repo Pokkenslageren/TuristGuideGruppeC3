@@ -17,3 +17,8 @@ ul {
     font-family: Tahoma, sans-serif;
     font-size: 100%;
 }
+
+p[title="test"]{
+    color : red;
+    font-family: "Times New Roman", Serif;
+}
