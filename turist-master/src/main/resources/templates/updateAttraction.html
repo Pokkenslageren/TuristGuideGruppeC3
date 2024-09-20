@@ -2,6 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
     <title>Opdater Attraktion</title>
 </head>
 <body>
@@ -22,23 +23,40 @@
     <button type="submit">opdater</button>
 </form>
 -->
-<form action="#" th:action="@{/attractions/save}" th:object="${touristAttraction}" method="post">
-    <label>Navn: <input type="text" th:field="*{name}"/></label> <br>
-    <label>Beskrivelse: <input type="text" th:field="*{description}"/></label> <br>
-
-    <select th:field="*{city}">
-        <option value="">--Vælg By--</option>
-        <option th:each="by : ${cities}" th:value="${by}" th:text="${by}"></option>
-    </select>
-
-    <div th:each="tag : ${ord}">
-            <input type="checkbox" th:field="*{tags}" th:value="${tag}" th:text="${tag}"/>
+<form action="#" th:action="@{/attractions/update}" th:object="${touristAttraction}" method="post">
+    <div>
+        <label>Navn:</label>
+        <input type="text" th:field="*{name}"/>
     </div>
     <br>
-    <button type="submit">ok</button>
+    <div>
+        <label>Beskrivelse:</label>
+        <input type="text" th:field="*{description}"/>
+    </div>
+    <br>
+    <div>
+        <label>By:</label>
+        <select th:field="*{city}">
+            <option value="">--Vælg By--</option>
+            <option th:each="by : ${cities}" th:value="${by}" th:text="${by}"></option>
+        </select>
+    </div>
+    <br>
+    <fieldset>
+        <legend>Vælg relevante tags</legend>
+        <div th:each="tag : ${ord}">
+            <input type="checkbox" th:field="*{tags}" th:value="${tag}"/>
+            <label th:text="${tag}"></label>
+        </div>
+    </fieldset>
+    <br>
+    <div class="button-container">
+        <button type="submit">Opdater</button>
+        <a href="http://localhost:8080/attractions">
+            <button type="button">Fortryd</button>
+        </a>
+    </div>
 </form>
-    <a href="http://localhost:8080/attractions">
-        <button>Fortryd</button>
-    </a>
+
 </body>
 </html>
