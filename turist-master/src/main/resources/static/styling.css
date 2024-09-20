@@ -1,0 +1,120 @@
+body {
+    background: lightgrey;
+    display: grid;
+    grid-template-areas:
+    "header nav nav"
+    "article article article"
+    "footer footer footer";
+    grid-template-rows: 160px 1.5fr auto;
+    grid-template-columns: 14% 1fr 15%;
+    grid-row-gap: 0;
+    grid-column-gap: 0;
+    height: 100vh;
+    margin: auto;
+}
+header, footer, article, nav {
+    padding: 1.2em;
+    background:  white;
+
+}
+
+#pageHeader {
+    grid-area: header
+}
+
+#pageFooter {
+    grid-area: footer;
+    background-color: lightgrey;
+}
+#mainArticle {
+    grid-area: article;
+    border: 1px solid black;
+}
+#mainNav {
+    position: relative;
+    grid-area: nav;
+    padding: 0;
+
+}
+
+header img {
+
+    padding-bottom: 20px;
+    float: left;
+    display: block;
+    width: 85%;
+
+
+}
+
+article img{
+    width: 920px;
+    height: 520px;
+   position: relative;
+    right: 10px;
+    padding-block: 10px 10px ;
+    padding-left: 20px;
+
+}
+
+ul {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 30px 30px 0;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+li a:hover {
+    background-color: lightgrey;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+blockquote {
+
+    float: left;
+    max-width: 650px;
+    margin: 10px auto;
+    padding: 15px;
+    background-color: lightgrey;
+    line-height: 1.6;
+    border-radius: 7px;
+
+}
+
+/* Stack the layout on small devices/viewports. */
+@media all and (max-width: 575px) {
+    body {
+        grid-template-areas:
+            "header"
+            "nav"
+            "article"
+            "footer";
+        grid-template-rows: 0.5fr auto 2fr 0.5fr;
+        grid-template-columns: 1fr;
+    }
+
+    ul {
+        margin: 1em 0; /* Adjust margin for smaller screens */
+    }
+}

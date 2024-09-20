@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tags</title>
+</head>
+<body>
+<h1 th:text="${attractionName}"></h1>
+
+<div th:each="att : ${attractions}">
+    <p th:if="${att.getName() == attractionName}" th:text="${att.getTags()}"></p>
+</div>
+
+<!--<p th:if="${attraction.getName() == attractionName}" th:text="${attraction.getTags()}"></p>    -->
+
+
+<form action="http://localhost:8080/attractions">
+    <input type="submit" value="tilbage"/>
+</form>
+
+
+</body>
+</html>
