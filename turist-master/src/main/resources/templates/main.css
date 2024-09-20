@@ -1,0 +1,28 @@
+form {
+    display: table;
+}
+
+p {
+    display: table-row;
+}
+
+label {
+    color: black;
+    font-weight: bold;
+    width: 130px;
+    display: table-cell;
+    padding-right: 10px;
+}
+
+input, select {
+    display: table-cell;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    margin-top: 20px;
+}

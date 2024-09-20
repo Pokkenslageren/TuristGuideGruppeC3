@@ -2,29 +2,45 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
     <title>Tilføj turistattraktion</title>
 </head>
 <body>
-    <h1>Tilføj turistattraktion</h1>
-    <form action="#" th:action="@{/attractions/save}" th:object="${touristAttraction}" method="post">
-        <label>Navn: <input type="text" th:field="*{name}"/></label> <br>
-        <label>Beskrivelse: <input type="text" th:field="*{description}"/></label> <br>
-       <!-- <label>By: <input type="text" th:field="*{city}"/></label> <br> -->
+<h1>Tilføj turistattraktion</h1>
+<form action="#" th:action="@{/attractions/save}" th:object="${touristAttraction}" method="post">
+    <div>
+        <label>Navn:</label>
+        <input type="text" th:field="*{name}"/>
+    </div>
+    <br>
+    <div>
+        <label>Beskrivelse:</label>
+        <input type="text" th:field="*{description}"/>
+    </div>
+    <br>
+    <div>
+        <label>By:</label>
         <select th:field="*{city}">
             <option value="">--Vælg By--</option>
             <option th:each="by : ${cities}" th:value="${by}" th:text="${by}"></option>
         </select>
-
+    </div>
+    <br>
+    <fieldset>
+        <legend>Vælg relevante tags</legend>
         <div th:each="tag : ${tags}">
-            <label>
-                <input type="checkbox" th:field="*{tags}" th:value="${tag}" th:text="${tag}">
-            </label></div>
-        <br>
-        <button type="submit">ok</button>
-    </form>
-    <a href="http://localhost:8080/attractions">
-        <button>Fortryd</button>
-    </a>
+            <input type="checkbox" th:field="*{tags}" th:value="${tag}" th:text="${tag}">
+            <label th:text="${tag}"></label>
+        </div>
+    </fieldset>
+    <br>
 
+    <div class="button-container">
+        <button type="submit">OK</button>
+        <a href="http://localhost:8080/attractions">
+            <button type="button">Fortryd</button>
+        </a>
+    </div>
+</form>
 </body>
 </html>
