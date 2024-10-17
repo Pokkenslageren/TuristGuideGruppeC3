@@ -21,18 +21,55 @@ public class TouristRepository {
     Connection conn;
 
     public TouristRepository(){
+        String cityQuery = "SELECT * FROM attraction_cities";
+        String pretagQuery = "SELECT * FROM attraction_pretags";
+        String descriptionQuery = "SELECT * FROM attraction_description";
+        String tagQuery = "SELECT * FROM attraction_tags";
         try {
-            String cityQuery = "SELECT * FROM attraction_cities";
-            Class.forName("com.mysql.jc.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(database, username, password);
             if (conn == null) {
                 System.out.println("connection not established.");
             }
-            PreparedStatement pstmt = conn.prepareStatement(cityQuery);
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                cities.add(rs.getString("city"));
-                System.out.println(rs.getString("city"));
+            PreparedStatement pstmtCities = conn.prepareStatement(cityQuery);
+            ResultSet rsCities = pstmtCities.executeQuery();
+            while (rsCities.next()) {
+                cities.add(rsCities.getString("city"));
+
+            }
+            PreparedStatement pstmtPretag = conn.prepareStatement(pretagQuery);
+            ResultSet rsPretag = pstmtPretag.executeQuery();
+            while (rsPretag.next()) {
+                tags.add(rsPretag.getString("tag"));
+                System.out.println(rsPretag.getString("tag"));
+            }
+            PreparedStatement pstmtDescription = conn.prepareStatement(descriptionQuery);
+            ResultSet rsDescription = pstmtDescription.executeQuery();
+            while (rsDescription.next()) {
+                String name = rsDescription.getString("name");
+                String description = rsDescription.getString("description");
+                String city = rsDescription.getString("city");
+                ArrayList<String> tags = new ArrayList<>();
+                TouristAttraction touristAttraction = new TouristAttraction(name, description, city, tags);
+                touristAttractionList.add(touristAttraction);
+            }
+            PreparedStatement pstmtTag = conn.prepareStatement(tagQuery);
+            ResultSet rsTag = pstmtTag.executeQuery();
+            ArrayList<ArrayList<String>> doubleString = new ArrayList<>();
+            while (rsTag.next()) {
+                ArrayList<String> jamesTags = new ArrayList<>();
+                String tag1 = rsTag.getString("tag1");
+                String tag2 = rsTag.getString("tag2");
+                String tag3 = rsTag.getString("tag3");
+                String tag4 = rsTag.getString("tag4");
+                jamesTags.add(tag1);
+                jamesTags.add(tag2);
+                jamesTags.add(tag3);
+                jamesTags.add(tag4);
+                doubleString.add(jamesTags);
+            }
+            for (int i = 0; i <= touristAttractionList.size(); i++) {
+                touristAttractionList.get(i).setTags(doubleString.get(i));
             }
         }
         catch (Exception e) {

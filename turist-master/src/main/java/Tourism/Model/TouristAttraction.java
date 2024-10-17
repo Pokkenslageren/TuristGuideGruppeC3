@@ -44,8 +44,6 @@ public class TouristAttraction {
 
     public void setTag(String tag) { tags.add(tag); }
 
-
-
+    public void setTags(ArrayList<String> tags) { this.tags = tags; }
 
 }
-
