@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.*;
+import java.sql.*;
 
 @Repository
 public class TouristRepository {
@@ -13,22 +15,29 @@ public class TouristRepository {
     List<TouristAttraction> touristAttractionList = new ArrayList<>();
     List<String> cities = new ArrayList<>();
     List<String> tags = new ArrayList<>();
+    String database = "jdbc:mysql://localhost:3306/tourist_attractions";
+    String username = "root";
+    String password = "Fam39ash012002";
+    Connection conn;
 
     public TouristRepository(){
-        touristAttractionList.add(new TouristAttraction("tivoli","Forlystelsespark i København K","København",List.of("Forlystelser","Børnevenlig")));
-        touristAttractionList.add(new TouristAttraction("smk", "Kunstmuseum","København", List.of("Kunst", "Museum")));
-        touristAttractionList.add(new TouristAttraction("viggos", "Værtshus i Odense midtby", "Odense", List.of("Øl", "God service")));
-        touristAttractionList.add(new TouristAttraction("zoo", "Zoologisk have i KBH V", "København", List.of("Børnevenlig","Dyr")));
-
-        cities.add("København");
-        cities.add("Odense");
-        cities.add("Århus");
-
-        tags.add("Børnevenlig");
-        tags.add("Billig");
-        tags.add("Kunst");
-        tags.add("Dyr");
-        tags.add("Kørestolsbruger");
+        try {
+            String cityQuery = "SELECT * FROM attraction_cities";
+            Class.forName("com.mysql.jc.jdbc.Driver");
+            conn = DriverManager.getConnection(database, username, password);
+            if (conn == null) {
+                System.out.println("connection not established.");
+            }
+            PreparedStatement pstmt = conn.prepareStatement(cityQuery);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                cities.add(rs.getString("city"));
+                System.out.println(rs.getString("city"));
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
