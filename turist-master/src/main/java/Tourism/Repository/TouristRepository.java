@@ -105,7 +105,36 @@ public class TouristRepository {
      * @param name of the attractions
      */
     public TouristAttraction deleteAttraction(String name){
-        Iterator<TouristAttraction> iterator = touristAttractionList.iterator();
+        String deleteQueryDescription = "DELETE FROM attraction_description WHERE name = ?";
+        String deleteQueryTags = "DELETE FROM attraction_tags WHERE name = ?";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(database, username, password);
+            if (conn == null) {
+                System.out.println("connection not established.");
+            }
+            PreparedStatement pstmt = conn.prepareStatement(deleteQueryDescription);
+            pstmt.setString(1, name);
+            PreparedStatement pstmt1 = conn.prepareStatement(deleteQueryTags);
+            pstmt1.setString(1, name);
+
+            int rowDeleted = pstmt.executeUpdate();
+            int rowDeleted1 = pstmt1.executeUpdate();
+
+            if(rowDeleted > 0 && rowDeleted1 > 0) {
+                System.out.println("Row deleted successfully.");
+            } else {
+                System.out.println("Row deletion failed. Name not found");
+            }
+
+        }
+        catch (Exception e) {
+            System.out.println("Error deleting profile" + e.getMessage());
+        }
+
+
+        /*Iterator<TouristAttraction> iterator = touristAttractionList.iterator();
         while(iterator.hasNext()){
             TouristAttraction touristAttraction = iterator.next();
             if(touristAttraction.getName().equals(name)){
@@ -113,6 +142,7 @@ public class TouristRepository {
                 return touristAttraction;
             }
         }
+        return null;*/
         return null;
     }
 
