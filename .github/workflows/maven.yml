@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      working-directory: './turist-master'
+      working-directory: './turist-master [TouristGuide]'
       run: mvn -B test
       
 
