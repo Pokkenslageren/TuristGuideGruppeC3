@@ -210,20 +210,20 @@ public class TouristRepository {
             if (conn == null) {
                 System.out.println("connection not established.");
             }
-            PreparedStatement psmtSaveDescription = conn.prepareStatement(saveQueryDescription);
-            psmtSaveDescription.setString(1,attractionName);
-            psmtSaveDescription.setString(2,attractionDescription);
-            psmtSaveDescription.setString(3,attractionCity);
-            PreparedStatement psmtSaveTags = conn.prepareStatement(saveQueryTags);
-            psmtSaveTags.setString(1,attractionName);
-            psmtSaveTags.setString(2,attractionCity);
-            psmtSaveTags.setString(3,attractionTags.get(0));
-            psmtSaveTags.setString(4,attractionTags.get(1));
-            psmtSaveTags.setString(5,attractionTags.get(2));
-            psmtSaveTags.setString(6,attractionTags.get(3));
+            PreparedStatement pstmtSaveDescription = conn.prepareStatement(saveQueryDescription);
+            pstmtSaveDescription.setString(1,attractionName);
+            pstmtSaveDescription.setString(2,attractionDescription);
+            pstmtSaveDescription.setString(3,attractionCity);
+            PreparedStatement pstmtSaveTags = conn.prepareStatement(saveQueryTags);
+            pstmtSaveTags.setString(1,attractionName);
+            pstmtSaveTags.setString(2,attractionCity);
+            pstmtSaveTags.setString(3,attractionTags.get(0));
+            pstmtSaveTags.setString(4,attractionTags.get(1));
+            pstmtSaveTags.setString(5,attractionTags.get(2));
+            pstmtSaveTags.setString(6,attractionTags.get(3));
 
-            psmtSaveDescription.executeUpdate();
-            psmtSaveTags.executeUpdate();
+            pstmtSaveDescription.executeUpdate();
+            pstmtSaveTags.executeUpdate();
 
         }
         catch (Exception e){
@@ -245,19 +245,19 @@ public class TouristRepository {
             if (conn == null) {
                 System.out.println("connection not established.");
             }
-            PreparedStatement psmtUpdateDescription = conn.prepareStatement(updateDescriptionQuery);
-            psmtUpdateDescription.setString(1, touristAttraction.getName());
-            psmtUpdateDescription.setString(2,touristAttraction.getDescription());
-            psmtUpdateDescription.setString(3,touristAttraction.getCity());
-            psmtUpdateDescription.setString(4,name);
-            psmtUpdateDescription.executeUpdate();
-            PreparedStatement psmtUpdateTags = conn.prepareStatement(updateTagsQuery);
-            psmtUpdateTags.setString(1,touristAttraction.getTags().get(0));
-            psmtUpdateTags.setString(2,touristAttraction.getTags().get(1));
-            psmtUpdateTags.setString(3,touristAttraction.getTags().get(2));
-            psmtUpdateTags.setString(4,touristAttraction.getTags().get(3));
-            psmtUpdateTags.setString(5, name);
-            psmtUpdateTags.executeUpdate();
+            PreparedStatement pstmtUpdateDescription = conn.prepareStatement(updateDescriptionQuery);
+            pstmtUpdateDescription.setString(1, touristAttraction.getName());
+            pstmtUpdateDescription.setString(2,touristAttraction.getDescription());
+            pstmtUpdateDescription.setString(3,touristAttraction.getCity());
+            pstmtUpdateDescription.setString(4,name);
+            pstmtUpdateDescription.executeUpdate();
+            PreparedStatement pstmtUpdateTags = conn.prepareStatement(updateTagsQuery);
+            pstmtUpdateTags.setString(1,touristAttraction.getTags().get(0));
+            pstmtUpdateTags.setString(2,touristAttraction.getTags().get(1));
+            pstmtUpdateTags.setString(3,touristAttraction.getTags().get(2));
+            pstmtUpdateTags.setString(4,touristAttraction.getTags().get(3));
+            pstmtUpdateTags.setString(5, name);
+            pstmtUpdateTags.executeUpdate();
         }
         catch (Exception e){
             e.getMessage();
