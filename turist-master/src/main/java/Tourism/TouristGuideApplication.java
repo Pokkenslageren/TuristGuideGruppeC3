@@ -18,13 +18,23 @@ public class TouristGuideApplication {
     public List<TouristAttraction> getTouristAttractionList(){ return touristRepository.getTouristAttractionList();}
 
     public TouristAttraction getAttractionByName(String name){
-        TouristAttraction touristAttraction = touristRepository.getAttractionByName(name);
+        //TouristAttraction touristAttraction = touristRepository.getAttractionByName(name);
+        TouristAttraction touristAttraction = touristRepository.readAttractionByName(name);
         return touristAttraction;
     }
 
     public TouristAttraction deleteAttraction(String name){
         TouristAttraction touristAttraction = touristRepository.deleteAttraction(name);
         return touristAttraction;
+    }
+
+    //Måske
+    public void saveAttraction(TouristAttraction touristAttraction){
+        touristRepository.saveAttraction(touristAttraction);
+    }
+
+    public void updateAttraction(TouristAttraction touristAttraction, String name){
+        touristRepository.updateAttraction(touristAttraction, name);
     }
 
 }

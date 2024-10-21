@@ -66,7 +66,8 @@ public class TouristController {
 
     @PostMapping("/attractions/save")
     public String saveAttraction(@ModelAttribute TouristAttraction touristAttraction){
-        touristGuideApplication.getTouristAttractionList().add(touristAttraction);
+        //touristGuideApplication.getTouristAttractionList().add(touristAttraction);
+        touristGuideApplication.saveAttraction(touristAttraction);
         return "redirect:/attractions";
     }
 
@@ -75,13 +76,15 @@ public class TouristController {
         model.addAttribute("touristAttraction", touristGuideApplication.getAttractionByName(name));
         model.addAttribute("ord", touristRepository.getTags());
         model.addAttribute("cities", touristRepository.getCities());
-        touristGuideApplication.getTouristAttractionList().remove(touristGuideApplication.getAttractionByName(name));
+        //touristGuideApplication.getTouristAttractionList().remove(touristGuideApplication.getAttractionByName(name));
         return "updateAttraction";
     }
 
     @PostMapping("/attractions/update")
     public String updateAttraction(@ModelAttribute TouristAttraction touristAttraction){
-        touristGuideApplication.getTouristAttractionList().add(touristAttraction);
+        //touristGuideApplication.getTouristAttractionList().add(touristAttraction);
+        //TODO: Find en måde at få det oprindelige name ned eller sæt WHERE til noget andet i queryen i repository
+        touristGuideApplication.updateAttraction(touristAttraction, touristAttraction.getName());
         return "redirect:/attractions";
     }
 
@@ -90,7 +93,7 @@ public class TouristController {
         TouristAttraction touristAttraction = touristGuideApplication.deleteAttraction(name);
         return new ResponseEntity<>(touristAttraction, HttpStatus.OK);
     }*/
-    public String deleteTouristAttraction(@PathVariable String name){
+    public String deleteTouristAttraction(@PathVariable("name") String name){
         touristGuideApplication.deleteAttraction(name);
         return "redirect:/attractions";
     }
